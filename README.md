@@ -1,36 +1,36 @@
-Design Document
+# Design Document
 
 A. Architecture diagram of the overall system
 
 
 
 Description
-User Interface (UI): Provides a user-friendly interface for users to input job descriptions and upload resumes. 
-Job Description Parser: Extracts structured information from the provided job description. This information includes job title, location, industry/domain, education degree, and technical skills. 
-Resume Parser: Extracts structured information from the uploaded resumes. This includes job title, location, industry/domain, education degree, and technical skills. 
-Matching Engine: Compares the extracted attributes from the job description and resume. It calculates a similarity score for each attribute, indicating how well the resume matches the job description. 
-Scoring Algorithm: Assigns a weighted score to each attribute based on its importance to the job. The overall match score is calculated as a weighted sum of individual attribute scores. 
-Database: Stores and manages job descriptions, resumes, and historical matching data for future analysis and improvement.
+- User Interface (UI): Provides a user-friendly interface for users to input job descriptions and upload resumes. 
+- Job Description Parser: Extracts structured information from the provided job description. This information includes job title, location, industry/domain, education degree, and technical skills. 
+- Resume Parser: Extracts structured information from the uploaded resumes. This includes job title, location, industry/domain, education degree, and technical skills. 
+- Matching Engine: Compares the extracted attributes from the job description and resume. It calculates a similarity score for each attribute, indicating how well the resume matches the job description. 
+- Scoring Algorithm: Assigns a weighted score to each attribute based on its importance to the job. The overall match score is calculated as a weighted sum of individual attribute scores. 
+- Database: Stores and manages job descriptions, resumes, and historical matching data for future analysis and improvement.
 
 B. Component Design: 
-Job Description Parser: Utilizes natural language processing (NLP) techniques to extract relevant information from the job description. Employs Named Entity Recognition (NER) for identifying entities like job title, location, and organization. Regular expressions are used to capture specific patterns related to education and technical skills. 
-There are chances that Job title identified with the NER won’t be having high accuracy, so we can use publicly available data here at kaggle to train our model to get which role/field are we referring to in Job description.
-Resume Parser: Applies NLP techniques to extract structured data from resumes. Utilizes NER for entities like job title, location, and organization. Regular expressions are employed for extracting education details and technical skills.
-Matching Engine: Compares the extracted attributes from the job description and resume. Employs a combination of exact matching, fuzzy matching, and semantic matching for a robust comparison. Assigns weights to different attributes based on their relevance to the job. 
-Scoring Algorithm: Calculates a similarity score for each attribute based on the matching approach used. Assigns weights to different attributes based on their importance to the job. Aggregates individual attribute scores to calculate the overall match score. 
+- Job Description Parser: Utilizes natural language processing (NLP) techniques to extract relevant information from the job description. Employs Named Entity Recognition (NER) for identifying entities like job title, location, and organization. Regular expressions are used to capture specific patterns related to education and technical skills. 
+- There are chances that Job title identified with the NER won’t be having high accuracy, so we can use publicly available data here at kaggle to train our model to get which role/field are we referring to in Job description.
+- Resume Parser: Applies NLP techniques to extract structured data from resumes. Utilizes NER for entities like job title, location, and organization. Regular expressions are employed for extracting education details and technical skills.
+- Matching Engine: Compares the extracted attributes from the job description and resume. Employs a combination of exact matching, fuzzy matching, and semantic matching for a robust comparison. Assigns weights to different attributes based on their relevance to the job. 
+- Scoring Algorithm: Calculates a similarity score for each attribute based on the matching approach used. Assigns weights to different attributes based on their importance to the job. Aggregates individual attribute scores to calculate the overall match score. 
 
 C. Attribute Extraction and Matching Details: 
-Job Title: Extracted using NER and regular expressions. Matching involves comparing the extracted job titles between the job description and resume. 
-Location: Extracted using NER. Matching involves comparing the extracted locations between the job description and resume. 
-Industry/Domain: Extracted using NER. Matching involves comparing the extracted industry/domain information between the job description and resume. 
-Education Degree: Extracted using a combination of NER and regular expressions. Matching involves comparing the extracted education details between the job description and resume. 
-Technical Skills: Extracted using a combination of NER and regular expressions. Matching involves comparing the extracted technical skills between the job description and resume. 
+- Job Title: Extracted using NER and regular expressions. Matching involves comparing the extracted job titles between the job description and resume. 
+- Location: Extracted using NER. Matching involves comparing the extracted locations between the job description and resume. 
+- Industry/Domain: Extracted using NER. Matching involves comparing the extracted industry/domain information between the job description and resume. 
+- Education Degree: Extracted using a combination of NER and regular expressions. Matching involves comparing the extracted education details between the job description and resume. 
+- Technical Skills: Extracted using a combination of NER and regular expressions. Matching involves comparing the extracted technical skills between the job description and resume. 
 
 Conclusion: The resume matching and scoring system outlined above leverages NLP techniques, regular expressions, and a scoring algorithm to provide a comprehensive analysis of how well a given resume matches a specific job description. The architecture ensures flexibility, scalability, and the ability to adapt to various job domains and requirements. The system can be continuously improved by analyzing historical data and refining the matching algorithms based on user feedback. 
 
-Working Code
-Github reference - here
-Deployment Doc
+
+
+# Deployment Doc
 
 Prerequisites
 Docker: Ensure that Docker is installed on the machine where you plan to deploy the microservice. 
